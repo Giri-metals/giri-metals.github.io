@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>GIRI METAL INDUSTRIES </title>
+  <title>GIRI METAL INDUSTRIES</title>
 
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- PREMIUM FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin:0;
-      font-family: Arial;
-      background:#111;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #1a1a1a, #000);
       color:white;
     }
 
@@ -19,6 +22,12 @@
       background:black;
       padding:15px;
       text-align:center;
+    }
+
+    header h1 {
+      font-size:28px;
+      letter-spacing:2px;
+      text-shadow:0 0 10px #00f0ff;
     }
 
     .products {
@@ -29,25 +38,41 @@
     }
 
     .card {
-      background:#1a1a1a;
-      border-radius:10px;
-      padding:10px;
+      background: linear-gradient(145deg, #1a1a1a, #222);
+      border-radius:12px;
+      padding:15px;
+      transition:0.3s;
+      border:1px solid #333;
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
     }
 
     img {
       width:100%;
       height:200px;
       background:#333;
+      border-radius:8px;
     }
 
     .btn {
       display:inline-block;
       margin-top:10px;
-      padding:8px 15px;
+      padding:10px 18px;
       background:#00f0ff;
       color:black;
       text-decoration:none;
-      border-radius:5px;
+      border-radius:6px;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    .btn:hover {
+      background:white;
+      color:black;
+      box-shadow:0 0 15px #00f0ff;
     }
 
     .contact {
@@ -55,13 +80,33 @@
       padding:30px;
       background:black;
     }
+
+    /* 🔥 ANIMATED BACKGROUND GLOW */
+    body::before {
+      content:"";
+      position:fixed;
+      width:300px;
+      height:300px;
+      background:#00f0ff;
+      filter:blur(150px);
+      top:10%;
+      left:20%;
+      animation:moveGlow 8s infinite alternate;
+      z-index:-1;
+    }
+
+    @keyframes moveGlow {
+      from { transform:translate(0,0); }
+      to { transform:translate(200px,200px); }
+    }
+
   </style>
 </head>
 
 <body>
 
 <header>
-  <h1>GIRI METALS</h1>
+  <h1>🔥 GIRI METALS</h1>
 </header>
 
 <div class="products">
@@ -69,43 +114,35 @@
   <div class="card">
     <img src="https://via.placeholder.com/300x200">
     <h3>Steel Vessel</h3>
-    
-    <a href="https://wa.me/9600091817?text=Hi%20I%20am%20interested%20in%20Steel%20Vessel" class="btn">
-    Enquire
-  </a>
+    <a href="https://wa.me/919600091817?text=Hi%20I%20am%20interested%20in%20Steel%20Vessel" class="btn">Enquire</a>
   </div>
 
   <div class="card">
     <img src="https://via.placeholder.com/300x200">
     <h3>Storage Tank</h3>
-    
-    <a href="https://wa.me/9600091817?text=Hi%20I%20am%20interested%20in%20Steel%20Vessel" class="btn">
-    Enquire
-  </a>
+    <a href="https://wa.me/919600091817?text=Hi%20I%20am%20interested%20in%20Storage%20Tank" class="btn">Enquire</a>
   </div>
 
   <div class="card">
     <img src="https://via.placeholder.com/300x200">
     <h3>Steel Drum</h3>
-    <a href="https://wa.me/9600091817?text=Hi%20I%20am%20interested%20in%20Steel%20Vessel" class="btn">
-    Enquire
-  </a>
+    <a href="https://wa.me/919600091817?text=Hi%20I%20am%20interested%20in%20Steel%20Drum" class="btn">Enquire</a>
   </div>
 
   <div class="card">
     <img src="https://via.placeholder.com/300x200">
     <h3>Industrial Container</h3>
-    <a href="https://wa.me/9600091817?text=Hi%20I%20am%20interested%20in%20Steel%20Vessel" class="btn">
-    Enquire
-  </a>
+    <a href="https://wa.me/919600091817?text=Hi%20I%20am%20interested%20in%20Industrial%20Container" class="btn">Enquire</a>
   </div>
 
 </div>
-  
+
 <div class="contact">
-  <h2>Contact Us</h2>
-  <a href="tel:+91 7010169587" class="btn">Call</a>
-  <a href="https://wa.me/9600091817" class="btn">WhatsApp</a>
+  <h2>📞 Contact Us</h2>
+  <p>Bulk Orders & Enquiries</p>
+  <a href="tel:+917010169587" class="btn">Call</a>
+  <br><br>
+  <a href="https://wa.me/919600091817" class="btn">WhatsApp</a>
 </div>
 
 </body>
