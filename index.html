@@ -3,147 +3,215 @@
 <head>
   <title>GIRI METAL INDUSTRIES</title>
 
-  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- PREMIUM FONT -->
+  <!-- FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
   <style>
+    html { scroll-behavior: smooth; }
+
     body {
       margin:0;
-      font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle at top, #1a1a1a, #000);
+      font-family:'Poppins',sans-serif;
       color:white;
+      background: linear-gradient(-45deg,#000,#0f2027,#203a43,#000);
+      background-size:400% 400%;
+      animation:bgMove 12s ease infinite;
     }
 
+    @keyframes bgMove {
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
+
+    /* Glow balls */
+    body::before, body::after {
+      content:"";
+      position:fixed;
+      width:300px;
+      height:300px;
+      border-radius:50%;
+      filter:blur(120px);
+      z-index:-1;
+    }
+
+    body::before {
+      background:#00f0ff;
+      top:10%;
+      left:10%;
+      animation:move1 10s infinite alternate;
+    }
+
+    body::after {
+      background:#ff00ff;
+      bottom:10%;
+      right:10%;
+      animation:move2 12s infinite alternate;
+    }
+
+    @keyframes move1 { to { transform:translate(200px,200px);} }
+    @keyframes move2 { to { transform:translate(-200px,-150px);} }
+
     header {
-      background:black;
-      padding:15px;
       text-align:center;
+      padding:15px;
+      background:rgba(0,0,0,0.7);
+      backdrop-filter: blur(10px);
     }
 
     header h1 {
-      font-size:28px;
-      letter-spacing:2px;
       text-shadow:0 0 10px #00f0ff;
     }
 
+    nav a {
+      margin:0 10px;
+      color:white;
+      text-decoration:none;
+    }
+
+    nav a:hover { color:#00f0ff; }
+
+    /* FILTER BUTTONS */
+    .filters {
+      text-align:center;
+      margin:20px;
+    }
+
+    .filters button {
+      padding:8px 15px;
+      margin:5px;
+      border:none;
+      background:#00f0ff;
+      color:black;
+      border-radius:5px;
+      cursor:pointer;
+    }
+
+    /* PRODUCTS */
     .products {
       display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
       gap:20px;
       padding:20px;
     }
 
+    /* GLASS CARD */
     .card {
-      background: linear-gradient(145deg, #1a1a1a, #222);
-      border-radius:12px;
+      background:rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      border-radius:15px;
       padding:15px;
-      transition:0.3s;
-      border:1px solid #333;
+      border:1px solid rgba(255,255,255,0.1);
+      transition:0.4s;
+      opacity:0;
+      transform:translateY(40px);
+    }
+
+    .card.show {
+      opacity:1;
+      transform:translateY(0);
     }
 
     .card:hover {
-      transform: translateY(-10px) scale(1.03);
-      box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
+      transform:scale(1.05);
+      box-shadow:0 0 25px #00f0ff;
     }
 
     img {
       width:100%;
       height:200px;
-      background:#333;
-      border-radius:8px;
+      border-radius:10px;
     }
 
     .btn {
       display:inline-block;
       margin-top:10px;
-      padding:10px 18px;
+      padding:8px 15px;
       background:#00f0ff;
       color:black;
+      border-radius:5px;
       text-decoration:none;
-      border-radius:6px;
-      font-weight:bold;
-      transition:0.3s;
-    }
-
-    .btn:hover {
-      background:white;
-      color:black;
-      box-shadow:0 0 15px #00f0ff;
     }
 
     .contact {
       text-align:center;
       padding:30px;
-      background:black;
+      background:rgba(0,0,0,0.7);
     }
-
-    /* 🔥 ANIMATED BACKGROUND GLOW */
-    body::before {
-      content:"";
-      position:fixed;
-      width:300px;
-      height:300px;
-      background:#00f0ff;
-      filter:blur(150px);
-      top:10%;
-      left:20%;
-      animation:moveGlow 8s infinite alternate;
-      z-index:-1;
-    }
-
-    @keyframes moveGlow {
-      from { transform:translate(0,0); }
-      to { transform:translate(200px,200px); }
-    }
-
   </style>
 </head>
 
 <body>
 
 <header>
-  <h1>🔥 GIRI METALS</h1>
+  <h1>GIRI METALS</h1>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#products">Products</a>
+    <a href="#contact">Contact</a>
+  </nav>
 </header>
 
-<div class="products">
+<!-- FILTER -->
+<div class="filters">
+  <button onclick="filter('all')">All</button>
+  <button onclick="filter('vessel')">Vessels</button>
+  <button onclick="filter('tank')">Tanks</button>
+</div>
 
-  <div class="card">
+<div class="products" id="products">
+
+  <div class="card vessel">
     <img src="https://via.placeholder.com/300x200">
     <h3>Steel Vessel</h3>
-    <a href="https://wa.me/919600091817?text=Hi%20I%20am%20interested%20in%20Steel%20Vessel" class="btn">Enquire</a>
+    <a href="https://wa.me/919600091817?text=Steel Vessel" class="btn">Enquire</a>
   </div>
 
-  <div class="card">
+  <div class="card tank">
     <img src="https://via.placeholder.com/300x200">
     <h3>Storage Tank</h3>
-    <a href="https://wa.me/919600091817?text=Hi%20I%20am%20interested%20in%20Storage%20Tank" class="btn">Enquire</a>
+    <a href="https://wa.me/919600091817?text=Storage Tank" class="btn">Enquire</a>
   </div>
 
-  <div class="card">
+  <div class="card vessel">
     <img src="https://via.placeholder.com/300x200">
     <h3>Steel Drum</h3>
-    <a href="https://wa.me/919600091817?text=Hi%20I%20am%20interested%20in%20Steel%20Drum" class="btn">Enquire</a>
-  </div>
-
-  <div class="card">
-    <img src="https://via.placeholder.com/300x200">
-    <h3>Industrial Container</h3>
-    <a href="https://wa.me/919600091817?text=Hi%20I%20am%20interested%20in%20Industrial%20Container" class="btn">Enquire</a>
+    <a href="https://wa.me/919600091817?text=Steel Drum" class="btn">Enquire</a>
   </div>
 
 </div>
 
-<div class="contact">
-  <h2>📞 Contact Us</h2>
-  <p>Bulk Orders & Enquiries</p>
+<div class="contact" id="contact">
+  <h2>Contact Us</h2>
   <a href="tel:+917010169587" class="btn">Call</a>
-  <br><br>
-  <a href="https://wa.me/919600091817" class="btn">WhatsApp</a>
 </div>
+
+<script>
+  // FILTER SYSTEM
+  function filter(type){
+    let cards=document.querySelectorAll(".card");
+    cards.forEach(c=>{
+      if(type==="all" || c.classList.contains(type)){
+        c.style.display="block";
+      } else {
+        c.style.display="none";
+      }
+    });
+  }
+
+  // SCROLL ANIMATION
+  let cards=document.querySelectorAll(".card");
+  window.addEventListener("scroll",()=>{
+    cards.forEach(card=>{
+      let top=card.getBoundingClientRect().top;
+      if(top < window.innerHeight-50){
+        card.classList.add("show");
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
